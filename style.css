@@ -23,7 +23,7 @@ select, input {
     height: auto;
 }
 
-.moedas {
+.moedaE, .moedaD {
     width: 75px;
     height: auto;
     margin-top: 6px;

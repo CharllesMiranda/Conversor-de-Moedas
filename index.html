@@ -17,49 +17,53 @@
 <div class="caixaPrincipal">
     
     <div> 
-        <img class="moedas" src="./assets/moedaReal.png.png" alt="moeda real">
+        <img class="moedaE" src="./assets/moedaReal.png.png" alt="moeda real">
         <img class="logoTopo" src="./assets/conversorSeta.png" alt="Setas direita e esquerda">
-        <img class="moedas" src="./assets/moedaDolar.png.png" alt="moeda dólar">
+        <img class="moedaD" src="./assets/moedaDolar.png.png" alt="moeda dólar">
     </div> 
-     
+    
+  
 
     <div class="converterDe">
         <label>Converter <strong>de</strong>:</label>  <!-- strong -> é mais semântico, usado pra dar ênfase.-->
-        <select>
+        <select class="opcoesDeMoedas1">
             <option class="moedas" value="real">R$ Real Brasileiro </option>
             <option value="dolar">US$ Dólar Americano </option>
             <option value="euro">€ Euro </option>
             <option value="libra">£ Libra</option>
-            <option value="biticoins">₿ Biticoins</option>
+            <option value="Bitcoin">₿ Bitcoin</option>
         </select>
     </div>
    
 
     <div class="converterPara">
         <label>Converter <strong>para</strong>:</label>
-        <select class="opcoesDeMoedas">
+        <select class="opcoesDeMoedas2">
             <option value="dolar">US$ Dólar Americano </option>
             <option value="real">R$ Real Brasileiro </option>
             <option value="euro">€ Euro </option>
             <option value="libra">£ Libra</option>
-            <option value="biticoins">₿ Biticoins</option>
+            <option value="Bitcoin">₿ Bitcoin</option>
         </select>
     </div>
 
     <div class="valor">
         <label>Valor</label>
-        <input class="valorParaConversao" placeholder="R$5.000,00">
+        <input class="valorParaConversao" placeholder="Digite o valor">
     </div>
 
     <button class="botaoConverter" >Converter</button>
 
     <div class="conversao">
-        <img src="./assets/real.png" alt="Bandeira do Brasil">
-        <figcaption>Real</figcaption>
+
+        <img class="imgMoeda1" src="./assets/real.png" alt="Bandeira do Brasil">
+        <figcaption class="nomeDaMoeda1">Real</figcaption>
         <h3 class="seraConvertido">R$ 0,00</h3>
+       
         <img class="setaBaixo" src="./assets/setaBaixo.png" alt="Seta para baixo">
-        <img class="imgMoeda" src="./assets/dolar.png" alt="Bandeira de Dolar">
-        <figcaption class="nomeDaMoeda">Dólar Americano</figcaption>
+        
+        <img class="imgMoeda2" src="./assets/dolar.png" alt="Bandeira de Dolar">
+        <figcaption class="nomeDaMoeda2">Dólar Americano</figcaption>
         <h3 class="foiConvertido">US$ 0,00</h3>
     </div>
 
