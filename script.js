@@ -3,6 +3,12 @@ const seletorDeMoedas1 = document.querySelector(".opcoesDeMoedas1")
 const seletorDeMoedas2 = document.querySelector(".opcoesDeMoedas2")
 const valorDigitado1 = document.querySelector(".valorParaConversao").value
 
+let dolarDoDia = 5.89
+let euroDoDia = 6.64
+let libraDoDia = 7.79
+let bitcoinDoDia = 84.553
+let realDoDia = 1
+
 // Essa parte é do "Converter de" 
 
 function opcaoDeValores() {
@@ -10,14 +16,7 @@ function opcaoDeValores() {
     const valorParaConverter1 = document.querySelector(".seraConvertido") //Valor em Real
     const valorJaConvertido1 = document.querySelector(".foiConvertido") //Valor de 0utras Moedas
 
-
-    const dolarDoDia = 5.2
-    const euroDoDia = 6.2
-    const libraDoDia = 7.74
-    const bitcoinDoDia = 84.553
-    const real = 1
-
-    if(seletorDeMoedas1.value == "dolar") {  // Se o valor for dolar, então execute essa função
+    if(seletorDeMoedas1.value == "dolar") {  
         valorParaConverter1.innerHTML = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD"
@@ -31,7 +30,7 @@ function opcaoDeValores() {
         }).format(valorDigitado1)
     }
 
-    if(seletorDeMoedas1.value == "euro") {  // Se o valor for dolar, então execute essa função
+    if(seletorDeMoedas1.value == "euro") {  
         valorParaConverter1.innerHTML = new Intl.NumberFormat("de-DE", {
         style: "currency",
         currency: "EUR"
@@ -54,57 +53,255 @@ function opcaoDeValores() {
     }   
 }
 
-// Essa parte é do "Converter para" 
+// ESSA PARTE É DO "CONVERTER PARA"
 
 function converterValores() {
     const valorDigitado = document.querySelector(".valorParaConversao").value
     const valorParaConverter = document.querySelector(".seraConvertido") //Valor em Real
     const valorJaConvertido = document.querySelector(".foiConvertido") //Valor de 0utras Moedas
-
-    const dolarDoDia = 5.89
-    const euroDoDia = 6.64
-    const libraDoDia = 7.79
-    const bitcoinDoDia = 84.553
-    const real = 1
     
-    if(seletorDeMoedas2.value == "dolar") {  // Se o valor for dolar, então execute essa função
+    // CONVERSAO DE REAL PARA...
+
+    if(seletorDeMoedas1.value == "real" && seletorDeMoedas2.value == "dolar") {  
+        dolarDoDia = 5.89
         valorJaConvertido.innerHTML = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD"
         }).format(valorDigitado / dolarDoDia)    
+        console.log("Deu certo o Dolar")
     }
 
-    if(seletorDeMoedas2.value == "real") {
+    if(seletorDeMoedas1.value == "real" && seletorDeMoedas2.value == "real") {  
+        realDoDia = 1
         valorJaConvertido.innerHTML = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL"
-        }).format(valorDigitado / real)
+        }).format(valorDigitado / realDoDia)
+        console.log("Deu certo o Real")
     }
 
-    if(seletorDeMoedas2.value == "euro") {  // Se o valor for euro, então execute essa função
+    if(seletorDeMoedas1.value == "real" && seletorDeMoedas2.value == "euro") {  
+        euroDoDia = 6.64
         valorJaConvertido.innerHTML = new Intl.NumberFormat("de-DE", {
         style: "currency",
         currency: "EUR"
-        }).format(valorDigitado / euroDoDia)
+        }).format(valorDigitado / euroDoDia)   
+        console.log("Deu certo o Euro")
     }
 
-    if (seletorDeMoedas2.value == "libra") {
+    if(seletorDeMoedas1.value == "real" && seletorDeMoedas2.value == "libra") {  
+        libraDoDia = 7.79
         valorJaConvertido.innerHTML = new Intl.NumberFormat("en-GB", {
         style: "currency",
         currency: "GBP"
         }).format(valorDigitado / libraDoDia);
+        console.log("Deu certo a Libra")
     }
-      
-    if (seletorDeMoedas2.value == "Bitcoin") {
+
+    if(seletorDeMoedas1.value == "real" && seletorDeMoedas2.value == "Bitcoin") {  
+        bitcoinDoDia = 84.553
         valorJaConvertido.innerHTML = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "BTC",
-        inimumFractionDigits: 6 // mais casas decimais por ser valor pequeno
+        minimumFractionDigits: 6 // mais casas decimais por ser valor pequeno
         }).format(valorDigitado / bitcoinDoDia);
-    }   
+        console.log("Deu certo a Bitcoin")
+    }
+
+    // CONVERSAO DE DOLAR PARA...
+
+    if(seletorDeMoedas1.value == "dolar" && seletorDeMoedas2.value == "real") {  
+        realDoDia = 5.89
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+        }).format(valorDigitado * realDoDia)
+        console.log("Deu certo de Dolar para Real")
+    }
+
+    if(seletorDeMoedas1.value == "dolar" && seletorDeMoedas2.value == "dolar") {  
+        dolarDoDia = 1
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+        }).format(valorDigitado / dolarDoDia)    
+        console.log("Deu certo de Dòlar para Dólar")
+    }
+
+    if(seletorDeMoedas1.value == "dolar" && seletorDeMoedas2.value == "euro") {  
+        euroDoDia = 0.887
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR"
+        }).format(valorDigitado / euroDoDia)   
+        console.log("Deu certo de Dólar para Euro")
+    }
+
+    if(seletorDeMoedas1.value == "dolar" && seletorDeMoedas2.value == "libra") {  
+        libraDoDia = 0.756
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-GB", {
+        style: "currency",
+        currency: "GBP"
+        }).format(valorDigitado / libraDoDia);
+        console.log("Deu certo de Dólar para Libra")
+    }
+
+    if(seletorDeMoedas1.value == "dolar" && seletorDeMoedas2.value == "Bitcoin") {  
+        bitcoinDoDia = 0.0697
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "BTC",
+        minimumFractionDigits: 6 // mais casas decimais por ser valor pequeno
+        }).format(valorDigitado / bitcoinDoDia);
+        console.log("Deu certo de Dólar para Bitcoin")
+    }
+
+    // CONVERSAO DE EURO PARA...
+
+    if(seletorDeMoedas1.value == "euro" && seletorDeMoedas2.value == "real") {  
+        realDoDia = 6.64
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+        }).format(valorDigitado * realDoDia)
+        console.log("Deu certo de Euro para Real")
+    }
+
+    if(seletorDeMoedas1.value == "euro" && seletorDeMoedas2.value == "dolar") {  
+        dolarDoDia = 1.127
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+        }).format(valorDigitado / dolarDoDia)    
+        console.log("Deu certo de Euro para Dólar")
+    }
+
+    if(seletorDeMoedas1.value == "euro" && seletorDeMoedas2.value == "euro") {  
+        euroDoDia = 1
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR"
+        }).format(valorDigitado / euroDoDia)   
+        console.log("Deu certo de Euro para Euro")
+    }
+
+    if(seletorDeMoedas1.value == "euro" && seletorDeMoedas2.value == "libra") {  
+        libraDoDia = 0.852
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-GB", {
+        style: "currency",
+        currency: "GBP"
+        }).format(valorDigitado / libraDoDia);
+        console.log("Deu certo de Euro para Libra")
+    }
+
+    if(seletorDeMoedas1.value == "euro" && seletorDeMoedas2.value == "Bitcoin") {  
+        bitcoinDoDia = 0.0785
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "BTC",
+        minimumFractionDigits: 6 // mais casas decimais por ser valor pequeno
+        }).format(valorDigitado / bitcoinDoDia);
+        console.log("Deu certo de Dólar para Bitcoin")
+    }
+
+    // CONVERSAO DE LIBRA PARA...
+
+    if(seletorDeMoedas1.value == "libra" && seletorDeMoedas2.value == "real") {  
+        realDoDia = 7.79
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+        }).format(valorDigitado * realDoDia)
+        console.log("Deu certo de Libra para Real")
+    }
+
+    if(seletorDeMoedas1.value == "libra" && seletorDeMoedas2.value == "dolar") {  
+        dolarDoDia = 1.322
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+        }).format(valorDigitado / dolarDoDia)    
+        console.log("Deu certo de Libra para Dólar")
+    }
+
+    if(seletorDeMoedas1.value == "libra" && seletorDeMoedas2.value == "euro") {  
+        euroDoDia = 1.173
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR"
+        }).format(valorDigitado / euroDoDia)   
+        console.log("Deu certo de Libra para Euro")
+    }
+
+    if(seletorDeMoedas1.value == "libra" && seletorDeMoedas2.value == "libra") {  
+        libraDoDia = 1
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-GB", {
+        style: "currency",
+        currency: "GBP"
+        }).format(valorDigitado / libraDoDia);
+        console.log("Deu certo de Libra para Libra")
+    }
+
+    if(seletorDeMoedas1.value == "libra" && seletorDeMoedas2.value == "Bitcoin") {  
+        bitcoinDoDia = 0.0921
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "BTC",
+        minimumFractionDigits: 6 // mais casas decimais por ser valor pequeno
+        }).format(valorDigitado / bitcoinDoDia);
+        console.log("Deu certo de Libra para Bitcoin")
+    }
+
+    // CONVERSAO DE BITCOIN PARA...
+
+    if(seletorDeMoedas1.value == "Bitcoin" && seletorDeMoedas2.value == "real") {  
+        realDoDia = 84.553
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+        }).format(valorDigitado * realDoDia)
+        console.log("Deu certo de Bitcoin para Real")
+    }
+
+    if(seletorDeMoedas1.value == "Bitcoin" && seletorDeMoedas2.value == "dolar") {  
+        dolarDoDia = 14.351
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+        }).format(valorDigitado / dolarDoDia)    
+        console.log("Deu certo de Bitcoin para Dólar")
+    }
+
+    if(seletorDeMoedas1.value == "Bitcoin" && seletorDeMoedas2.value == "euro") {  
+        euroDoDia = 12.733
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR"
+        }).format(valorDigitado / euroDoDia)   
+        console.log("Deu certo de Bitcoin para Euro")
+    }
+
+    if(seletorDeMoedas1.value == "Bitcoin" && seletorDeMoedas2.value == "libra") {  
+        libraDoDia = 10.851
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-GB", {
+        style: "currency",
+        currency: "GBP"
+        }).format(valorDigitado / libraDoDia);
+        console.log("Deu certo de Bitcoin para Libra")
+    }
+
+    if(seletorDeMoedas1.value == "Bitcoin" && seletorDeMoedas2.value == "Bitcoin") {  
+        bitcoinDoDia = 1
+        valorJaConvertido.innerHTML = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "BTC",
+        minimumFractionDigits: 6 // mais casas decimais por ser valor pequeno
+        }).format(valorDigitado / bitcoinDoDia);
+        console.log("Deu certo de Bitcoin para Bitcoin")
+    }
 }
 
-// Essa parte é para mudar Moeda do logotipo  do lado esqeurdo, conforme o tipo de moeda selecionada.
+// ESSA PARTE É PARA MUDAR MOEDA DO LOGOTIPO DO LADO ESQUERDO, CONFORME O TIPO DE MOEDA SELECIONADA.
 
 function mudarLogoE(){
     const moedaEsquerda = document.querySelector(".moedaE")
@@ -130,7 +327,7 @@ function mudarLogoE(){
     }
 }
 
-// Essa parte é para mudar Moeda do logotipo  do lado direito, conforme o tipo de moeda selecionada.
+// ESSA PARTE É PARA MUDAR MOEDA DO LOGOTIPO DO LADO DIREITO, CONFORME O TIPO DE MOEDA SELECIONADA.
 
 function mudarLogoD(){
    const moedaDireita = document.querySelector(".moedaD")
@@ -156,7 +353,7 @@ function mudarLogoD(){
     }
 }
 
-// Essa parte é para mudar imagem e descrição da primeira moeda na parte de baixo onde dá o resultado da converção.
+// ESSA PARTE É PARA MUDAR IMAGEM E DESCRIÇÃO DA PRIMEIRA MOEDA NA PARTE DE BAIXO ONDE DÁ O RESULTADO DA CONVERÇÃO.
 
 function mudarDeMoeda1() { // Refere-se há primeira opção de moeda selecionada no "Converter de:"
     const nomeMoeda1 = document.querySelector(".nomeDaMoeda1")
@@ -189,16 +386,17 @@ function mudarDeMoeda1() { // Refere-se há primeira opção de moeda selecionad
     }
 
     opcaoDeValores()
+    converterValores()
 }
 
-// Essa parte é para mudar imagem e descrição da segunda moeda na parte de baixo onde dá o resultado da converção.
+// ESSA PARTE É PARA MUDAR IMAGEM E DESCRIÇÃO DA SEGUNDA MOEDA NA PARTE DE BAIXO ONDE DÁ O RESULTADO DA CONVERÇÃO.
 
-function mudarDeMoeda2() { // // Refere-se há primeira opção de moeda selecionada no "Converter para:"
+function mudarDeMoeda2() { // // Refere-se há segunda opção de moeda selecionada no "Converter para:"
     const nomeMoeda2 = document.querySelector(".nomeDaMoeda2")
     const imgBandeira2 = document.querySelector(".imgMoeda2")
 
     if(seletorDeMoedas2.value == "dolar") { 
-        nomeMoeda2.innerHTML = "Dólar Americano"
+        nomeMoeda2.innerHTML = "Dólar Americano"'
         imgBandeira2.src = "./assets/dolar.png"
     }
 
@@ -224,11 +422,11 @@ function mudarDeMoeda2() { // // Refere-se há primeira opção de moeda selecio
 
     converterValores()
 }
-
-seletorDeMoedas2.addEventListener("change", mudarDeMoeda2) // addEventListener("change") esta verificando toda vez que eu mudo de opção 
+    
+seletorDeMoedas2.addEventListener("change", mudarDeMoeda2, converterValores) // addEventListener("change") esta verificando toda vez que eu mudo de opção 
 converterBotao.addEventListener("click", converterValores) //  addEventListener("click") esta verificando toda vez que eu clico no botão
 
-seletorDeMoedas1.addEventListener("change", mudarDeMoeda1 )// addEventListener("change") esta verificando toda vez que eu mudo de opção 
+seletorDeMoedas1.addEventListener("change", mudarDeMoeda1, converterValores)// addEventListener("change") esta verificando toda vez que eu mudo de opção 
 converterBotao.addEventListener("click", opcaoDeValores) //  addEventListener("click") esta verificando toda vez que eu clico no botão
 
 seletorDeMoedas1.addEventListener("change",  mudarLogoE)// addEventListener("change") esta verificando toda vez que eu mudo de opção 
