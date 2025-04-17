@@ -396,7 +396,7 @@ function mudarDeMoeda2() { // // Refere-se há segunda opção de moeda selecion
     const imgBandeira2 = document.querySelector(".imgMoeda2")
 
     if(seletorDeMoedas2.value == "dolar") { 
-        nomeMoeda2.innerHTML = "Dólar Americano"'
+        nomeMoeda2.innerHTML = "Dólar Americano"
         imgBandeira2.src = "./assets/dolar.png"
     }
 
