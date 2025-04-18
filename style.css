@@ -40,15 +40,17 @@ select, input {
 }
 
 .caixaPrincipal {
-    display: flex;
+    display: grid;
     width: 330px;
-    height: 100vh;
+    height: 725px;
     background: #ffffff; 
     display: block; 
     place-items: center;     /* Centraliza nos dois eixos */
     margin-left: auto; /*Margin left e right em auto, deixa centralizado no meio da tela. Precisa ser display block*/
     margin-right: auto;
     opacity: 90%;
+    border-radius: 45px;
+    margin: 5px auto 5px auto;
 }
 
 .converterDe {
@@ -98,4 +100,24 @@ button:active {
 
 .setaBaixo {
     margin: 8px 0;
+}
+
+@media (max-width: 480px) {
+    .caixaPrincipal {
+        display: grid;
+        margin: 10px auto 10px auto;
+        height: 780px;
+    }
+
+    .converterDe {
+        margin-top: -50px;
+    }
+    
+    .converterPara {    
+        margin: -50px 0; /*Margin em cima e em baixo*/
+    }
+
+    .botaoConverter {
+        margin: -20px auto;
+    }
 }
