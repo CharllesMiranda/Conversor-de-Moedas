@@ -359,7 +359,6 @@ function mudarDeMoeda1() { // Refere-se há primeira opção de moeda selecionad
     const nomeMoeda1 = document.querySelector(".nomeDaMoeda1")
     const imgBandeira1 = document.querySelector(".imgMoeda1")
    
-
     if(seletorDeMoedas1.value == "dolar") { 
         nomeMoeda1.innerHTML = "Dólar Americano"
         imgBandeira1.src = "./assets/dolar.png"   
